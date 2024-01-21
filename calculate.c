@@ -97,7 +97,7 @@ void main(void) {
     srand(time(NULL));
     int n_iterations = N_ITERATIONS;
 
-    int roll_totals[n_iterations];
+    int *roll_totals = malloc(sizeof(int) * n_iterations);
     calculate_rolls(roll_totals, n_iterations);
 
     print_stats(roll_totals, n_iterations);
