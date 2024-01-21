@@ -122,14 +122,15 @@ void print_help(void) {
         "\t-s\tThe number of sides of the dice (default is %d)\n"
         "\t-r\tThe number of the worst scoring dice to remove (default is %d)\n"
         "\t-d\tPrint the distribution of rolls\n"
-        "\t-p\tPrint the rolls for each iteration\n",
+        "\t-p\tPrint the rolls for each iteration\n"
+        "\t-h\tDisplay this help message\n",
         DEFAULT_N_ITERATIONS, DEFAULT_N_DICE, DEFAULT_N_SIDES, DEFAULT_REMOVE_N_WORST_DICE
     );
 }
 
 int main(int argc, char *argv[]) {
     int opt;
-    while ((opt = getopt(argc, argv, "i:n:s:r:dp")) != -1) {
+    while ((opt = getopt(argc, argv, "i:n:s:r:dph?")) != -1) {
         switch (opt) {
             case 'i': n_iterations = atoi(optarg); break;
             case 'n': n_dice = atoi(optarg); break;
@@ -137,6 +138,8 @@ int main(int argc, char *argv[]) {
             case 'r': remove_n_worst_dice = atoi(optarg); break;
             case 'd': print_distribution = true; break;
             case 'p': print_rolls = true; break;
+            case 'h':
+            case '?':
             default:
                 print_help();
                 return 0;
